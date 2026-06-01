@@ -16,7 +16,8 @@ This project is an end-to-end data analytics solution designed to identify the r
 3. **The "High Effort, Low Reward" Trap:** Isolated a high-risk group in the Sales department working consistent overtime for sub-14% raises, leading to a catastrophic 40%+ attrition spike.
 
 ## 📸 Dashboard Preview
-*(Drag and drop your Power BI screenshot right here so it displays in the browser!)*
+<img width="1415" height="796" alt="image" src="https://github.com/user-attachments/assets/1424a86f-2ba4-40af-891f-5d2e595cc324" />
+
 
 ## 📂 Repository Navigation
 * `/scripts`: Contains the Python notebooks and SQL queries used for EDA.
