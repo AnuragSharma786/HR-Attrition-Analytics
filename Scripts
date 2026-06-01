@@ -1,0 +1,53 @@
+import pandas as pd
+from sqlalchemy import create_engine
+import logging
+import time
+logging.basicConfig(
+    filename = 'hrpipeline.log',
+    level = logging.INFO,
+    format = '%(asctime)s - %(levelname)s - %(message)s',
+    datefmt = '%Y-%m-%d %H:%M:%S'
+)
+
+def clean_raw_data(df):
+    logging.info('------------CLEANING OF RAW DATA---------------')
+    intial_df = len(df)
+# Remove unnecessary columns
+    try:
+        cols = ['Over18','Education','StockOptionLevel','EducationField']
+        column = [c for c in cols if c in df.columns]
+        df = df.drop(columns = column)
+        logging.info(f"Sucessfully dropped columns{cols}")
+        df = df.drop_duplicates()
+        new_df = intial_df-len(df)
+        logging.info(f"Removed Duplicated Data{new_df} from DataBase")
+        return df
+    except Exception as e:
+        logging.error(f"UNABLE TO CELAN DATA ERROR{e}")
+        raise
+def main():
+    logging.info('-----------STARTING THE HR ETL PIPELINE---------------')
+    start = time.time()
+    try:
+        file_path = "C:/Users/anura/OneDrive/Documents/HR ERA Project/Raw Data/WA_Fn-UseC_-HR-Employee-Attrition.csv"
+        raw_file = pd.read_csv(file_path)
+        logging.info(f"Sucessfully loaded len{raw_file} from CSV TO SQL")
+        cleaned_df = clean_raw_data(raw_file)
+    
+        username = 'root'
+        password = 'anurag20078690'
+        host = 'localhost'
+        database = 'hr_analytics'
+        engine = create_engine(f'mysql+pymysql://{username}:{password}@{host}/{database}')
+        logging.info('-------------- Pushing cleaned data to MYSQL IN chinks of 200---------------')
+        cleaned_df.to_sql(name = 'enployees_data',con = engine,if_exists = 'replace',index = False,chunksize = 200)
+        logging.info('Pipeline Successful! Database is UPDATED.')
+        end = time.time()
+        total_time = end-start/60
+        logging.info(f"Total Time Taken {total_time} minutes")
+    except Exception as e:
+        logging.error(f'UNABLE TO PUSHED CLEANED DATA ERROR {e}')
+        raise
+
+if __name__ == '__main__':
+    main()
