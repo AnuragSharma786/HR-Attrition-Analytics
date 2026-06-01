@@ -55,6 +55,6 @@ To present these findings to the Elevate Labs leadership team, I connected Power
 <img width="1415" height="796" alt="image" src="https://github.com/user-attachments/assets/1424a86f-2ba4-40af-891f-5d2e595cc324" />
 
 ## 📂 Repository Navigation
-* `Scripts`: Contains the Python ETL scripts and the `.sql` query files.
+* `/Scripts`: Contains the Python ETL scripts and the `.sql` query files.
 * `/data`: Contains the data dictionary and database schema context.
 * `/dashboard`: Contains the `.pbix` Power BI file and static PDF exports for quick viewing.
