@@ -1,7 +1,7 @@
 # End-to-End HR Attrition Analytics: ETL Pipeline & Executive Dashboard
 
 ## 📌 Project Overview
-This project is a complete end-to-end data analytics solution designed to identify the root causes of employee attrition at Elevate Labs. I built a custom ETL pipeline to process raw HR data, loaded it into a MySQL database, executed complex SQL queries to extract business insights, and visualized the findings in an interactive Power BI executive dashboard.
+This project is a complete end-to-end data analytics solution designed to identify the root causes of employee attrition at Apex Global Industries. I built a custom ETL pipeline to process raw HR data, loaded it into a MySQL database, executed complex SQL queries to extract business insights, and visualized the findings in an interactive Power BI executive dashboard.
 
 ---
 
